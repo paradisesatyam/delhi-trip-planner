@@ -645,7 +645,9 @@ Trip details:
 - Interests: ${form.placeTypes.join(", ") || "general sightseeing"}
 - Notes: ${form.description || "none"}
 
-Respond ONLY with valid JSON. No markdown, no backticks, no extra text. Use this exact structure:
+IMPORTANT: Respond ONLY with a raw JSON object. No markdown, no backticks, no code blocks, no explanation, no extra text before or after. Just the JSON.
+
+Use this exact structure:
 {"title":"creative trip title","summary":"2-3 sentence overview","totalBudgetEstimate":"e.g. ₹3,000–4,500 per person total","tips":["tip1","tip2","tip3"],"days":[{"day":1,"theme":"Day theme","transport":"Recommended transport","dayBudget":"₹X–Y per person","stops":[{"time":"9:00 AM","name":"Place name","type":"Monument","description":"1-2 sentence description","duration":"1.5 hours","cost":"₹X per person or Free","tip":"one insider tip"}]}]}`;
 
   try {
@@ -660,7 +662,7 @@ Respond ONLY with valid JSON. No markdown, no backticks, no extra text. Use this
         messages: [
           {
             role: "system",
-            content: "You are a Delhi travel expert. Always respond with valid JSON only. No markdown, no backticks, no extra text."
+            content: "You are a Delhi travel expert. You must respond with valid raw JSON only. No markdown formatting, no code blocks, no backticks, no explanations. Just pure JSON."
           },
           {
             role: "user",
@@ -668,7 +670,8 @@ Respond ONLY with valid JSON. No markdown, no backticks, no extra text. Use this
           }
         ],
         temperature: 0.7,
-        max_tokens: 4000
+        max_tokens: 4000,
+        response_format: { type: "json_object" }
       })
     });
 
@@ -678,14 +681,27 @@ Respond ONLY with valid JSON. No markdown, no backticks, no extra text. Use this
       setResult({
         error: true,
         message: "API Error",
-        detail: data?.error?.message || "Check your Groq API key in .env file"
+        detail: data?.error?.message || "Check your Groq API key"
       });
       return;
     }
 
     const text = data.choices?.[0]?.message?.content || "";
-    const clean = text.replace(/```json|```/g, "").trim();
-    const parsed = JSON.parse(clean);
+
+    // Clean any possible markdown wrapping
+    const clean = text
+      .replace(/```json/gi, "")
+      .replace(/```/g, "")
+      .trim();
+
+    // Extract JSON if there's extra text around it
+    const jsonMatch = clean.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) {
+      setResult({ error: true, message: "Could not parse response. Please try again." });
+      return;
+    }
+
+    const parsed = JSON.parse(jsonMatch[0]);
     setResult(parsed);
 
   } catch (e) {
