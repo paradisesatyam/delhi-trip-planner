@@ -2,62 +2,32 @@ import { useState, useEffect } from "react";
 
 const DELHI_IMAGES = [
   {
-    url: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1280&q=80",
+    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Magnificent_Red_Fort.jpg/1280px-Magnificent_Red_Fort.jpg",
     name: "Red Fort",
     area: "Old Delhi"
   },
   {
-    url: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1280&q=80",
+    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/India_Gate_in_New_Delhi_03-2016.jpg/1280px-India_Gate_in_New_Delhi_03-2016.jpg",
     name: "India Gate",
     area: "Central Delhi"
   },
   {
-    url: "https://images.unsplash.com/photo-1514222134-b57cbb8ce073?w=1280&q=80",
+    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Lotus_temple_in_India.jpg/1280px-Lotus_temple_in_India.jpg",
     name: "Lotus Temple",
     area: "South Delhi"
   },
   {
-    url: "https://images.unsplash.com/photo-1548013146-72479768bada?w=1280&q=80",
-    name: "Taj Mahal",
-    area: "Agra Day Trip"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?w=1280&q=80",
-    name: "Humayun's Tomb",
-    area: "South Delhi"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?w=1280&q=80",
+    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Qutb_Minar_2012.jpg/800px-Qutb_Minar_2012.jpg",
     name: "Qutb Minar",
     area: "South Delhi"
   },
   {
-    url: "https://images.unsplash.com/photo-1555952517-2e8e729e0b44?w=1280&q=80",
-    name: "Chandni Chowk",
-    area: "Old Delhi"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1280&q=80",
-    name: "Akshardham Temple",
-    area: "East Delhi"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1597040663342-45b6af3d91a5?w=1280&q=80",
-    name: "Jama Masjid",
-    area: "Old Delhi"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1561361058-c24e02b54e07?w=1280&q=80",
-    name: "Lodhi Garden",
+    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Humayun%27s_Tomb_-_Agha_Khan_Trust_for_Culture.jpg/1280px-Humayun%27s_Tomb_-_Agha_Khan_Trust_for_Culture.jpg",
+    name: "Humayun's Tomb",
     area: "South Delhi"
   },
   {
-    url: "https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=1280&q=80",
-    name: "Hauz Khas",
-    area: "South Delhi"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1553532434-5ab5b6b84993?w=1280&q=80",
+    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Above_Cannaught_place.jpg/1280px-Above_Cannaught_place.jpg",
     name: "Connaught Place",
     area: "Central Delhi"
   },
