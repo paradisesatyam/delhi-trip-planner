@@ -2,34 +2,34 @@ import { useState, useEffect } from "react";
 
 const DELHI_IMAGES = [
   {
-    url: "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=1280&q=80",
+    url: "/redfort.jpg",
     name: "Red Fort",
     area: "Old Delhi"
   },
   {
-    url: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1280&q=80",
+    url: "/indiagate.jpg",
     name: "India Gate",
     area: "Central Delhi"
   },
   {
-    url: "https://images.unsplash.com/photo-1477587458883-47145ed31db6?auto=format&fit=crop&w=1280&q=80",
+    url: "/lotustemple.jpg",
     name: "Lotus Temple",
     area: "South Delhi"
   },
   {
-    url: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1280&q=80",
+    url: "/qutbminar.jpg",
     name: "Qutb Minar",
     area: "South Delhi"
   },
   {
-    url: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=1280&q=80",
+    url: "/humayuntomb.jpg",
     name: "Humayun's Tomb",
     area: "South Delhi"
   },
   {
-    url: "https://images.unsplash.com/photo-1555952517-2e8e729e0b44?auto=format&fit=crop&w=1280&q=80",
-    name: "Chandni Chowk",
-    area: "Old Delhi"
+    url: "/connaughtplace.jpg",
+    name: "Connaught Place",
+    area: "Central Delhi"
   },
 ];
 
