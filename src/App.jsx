@@ -2,34 +2,34 @@ import { useState, useEffect } from "react";
 
 const DELHI_IMAGES = [
   {
-    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Magnificent_Red_Fort.jpg/1280px-Magnificent_Red_Fort.jpg",
+    url: "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=1280&q=80",
     name: "Red Fort",
     area: "Old Delhi"
   },
   {
-    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/India_Gate_in_New_Delhi_03-2016.jpg/1280px-India_Gate_in_New_Delhi_03-2016.jpg",
+    url: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1280&q=80",
     name: "India Gate",
     area: "Central Delhi"
   },
   {
-    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Lotus_temple_in_India.jpg/1280px-Lotus_temple_in_India.jpg",
+    url: "https://images.unsplash.com/photo-1477587458883-47145ed31db6?auto=format&fit=crop&w=1280&q=80",
     name: "Lotus Temple",
     area: "South Delhi"
   },
   {
-    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Qutb_Minar_2012.jpg/800px-Qutb_Minar_2012.jpg",
+    url: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1280&q=80",
     name: "Qutb Minar",
     area: "South Delhi"
   },
   {
-    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Humayun%27s_Tomb_-_Agha_Khan_Trust_for_Culture.jpg/1280px-Humayun%27s_Tomb_-_Agha_Khan_Trust_for_Culture.jpg",
+    url: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=1280&q=80",
     name: "Humayun's Tomb",
     area: "South Delhi"
   },
   {
-    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Above_Cannaught_place.jpg/1280px-Above_Cannaught_place.jpg",
-    name: "Connaught Place",
-    area: "Central Delhi"
+    url: "https://images.unsplash.com/photo-1555952517-2e8e729e0b44?auto=format&fit=crop&w=1280&q=80",
+    name: "Chandni Chowk",
+    area: "Old Delhi"
   },
 ];
 
