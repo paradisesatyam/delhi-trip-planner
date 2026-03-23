@@ -1,12 +1,66 @@
 import { useState, useEffect } from "react";
 
 const DELHI_IMAGES = [
-  { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Magnificent_Red_Fort.jpg/1280px-Magnificent_Red_Fort.jpg", name: "Red Fort", area: "Old Delhi" },
-  { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/India_Gate_in_New_Delhi_03-2016.jpg/1280px-India_Gate_in_New_Delhi_03-2016.jpg", name: "India Gate", area: "Central Delhi" },
-  { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Lotus_temple_in_India.jpg/1280px-Lotus_temple_in_India.jpg", name: "Lotus Temple", area: "South Delhi" },
-  { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Qutb_Minar_2012.jpg/800px-Qutb_Minar_2012.jpg", name: "Qutb Minar", area: "South Delhi" },
-  { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Humayun%27s_Tomb_-_Agha_Khan_Trust_for_Culture.jpg/1280px-Humayun%27s_Tomb_-_Agha_Khan_Trust_for_Culture.jpg", name: "Humayun's Tomb", area: "South Delhi" },
-  { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Above_Cannaught_place.jpg/1280px-Above_Cannaught_place.jpg", name: "Connaught Place", area: "Central Delhi" },
+  {
+    url: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1280&q=80",
+    name: "Red Fort",
+    area: "Old Delhi"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1280&q=80",
+    name: "India Gate",
+    area: "Central Delhi"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1514222134-b57cbb8ce073?w=1280&q=80",
+    name: "Lotus Temple",
+    area: "South Delhi"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1548013146-72479768bada?w=1280&q=80",
+    name: "Taj Mahal",
+    area: "Agra Day Trip"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?w=1280&q=80",
+    name: "Humayun's Tomb",
+    area: "South Delhi"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?w=1280&q=80",
+    name: "Qutb Minar",
+    area: "South Delhi"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1555952517-2e8e729e0b44?w=1280&q=80",
+    name: "Chandni Chowk",
+    area: "Old Delhi"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1280&q=80",
+    name: "Akshardham Temple",
+    area: "East Delhi"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1597040663342-45b6af3d91a5?w=1280&q=80",
+    name: "Jama Masjid",
+    area: "Old Delhi"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1561361058-c24e02b54e07?w=1280&q=80",
+    name: "Lodhi Garden",
+    area: "South Delhi"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=1280&q=80",
+    name: "Hauz Khas",
+    area: "South Delhi"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1553532434-5ab5b6b84993?w=1280&q=80",
+    name: "Connaught Place",
+    area: "Central Delhi"
+  },
 ];
 
 const PLACE_TYPES = [
@@ -225,97 +279,254 @@ function HomeView({ onStart }) {
     <div style={{ background: "#080810" }}>
 
       {/* HERO */}
-      <div style={{ position: "relative", height: "92vh", overflow: "hidden", minHeight: 480 }}>
+      <div style={{ position: "relative", minHeight: "100vh", overflow: "hidden" }}>
+
+        {/* Background Images */}
         {DELHI_IMAGES.map((img, i) => (
-          <div key={i} style={{ position: "absolute", inset: 0, opacity: i === heroIdx ? 1 : 0, transition: "opacity 1.4s ease", zIndex: 0 }}>
-            <img src={img.url} alt={img.name}
-              style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(.42) saturate(1.2)" }} />
+          <div key={i} style={{
+            position: "absolute", inset: 0,
+            opacity: i === heroIdx ? 1 : 0,
+            transition: "opacity 1.4s ease", zIndex: 0
+          }}>
+            <img src={img.url} alt={img.name} style={{
+              width: "100%", height: "100%",
+              objectFit: "cover",
+              filter: "brightness(.38) saturate(1.2)"
+            }} />
           </div>
         ))}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom,rgba(8,8,16,.3) 0%,rgba(8,8,16,.05) 35%,rgba(8,8,16,.82) 78%,#080810 100%)", zIndex: 1 }} />
+
+        {/* Dark overlays */}
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(to bottom,rgba(8,8,16,.5) 0%,rgba(8,8,16,.2) 30%,rgba(8,8,16,.6) 70%,#080810 100%)",
+          zIndex: 1
+        }} />
 
         {/* Navbar */}
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 10, display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 28px" }}>
+        <div style={{
+          position: "relative", zIndex: 10,
+          display: "flex", justifyContent: "space-between",
+          alignItems: "center", padding: "22px 36px"
+        }}>
           <div style={{ display: "flex", alignItems: "center", gap: "9px" }}>
-            <span style={{ fontSize: "22px" }}>🏯</span>
-            <span style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "20px", fontWeight: 700, color: "#fbbf24", letterSpacing: "1px" }}>Delhi Trip Planner</span>
+            <span style={{ fontSize: "24px" }}>🏯</span>
+            <span style={{
+              fontFamily: "'Cormorant Garamond',serif",
+              fontSize: "22px", fontWeight: 700,
+              color: "#fbbf24", letterSpacing: "1px"
+            }}>Delhi Trip Planner</span>
           </div>
-          <div style={{ display: "flex", gap: "6px" }}>
+          <div style={{ display: "flex", gap: "8px" }}>
             {["Heritage", "Food", "Shopping", "Explore"].map(t => (
-              <button key={t} onClick={onStart} style={{ padding: "7px 14px", background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.12)", borderRadius: "18px", color: "rgba(255,255,255,.75)", cursor: "pointer", fontSize: "12px", fontFamily: "'DM Sans',sans-serif" }}>{t}</button>
+              <button key={t} onClick={onStart} style={{
+                padding: "8px 16px",
+                background: "rgba(255,255,255,.08)",
+                border: "1px solid rgba(255,255,255,.15)",
+                borderRadius: "20px", color: "rgba(255,255,255,.8)",
+                cursor: "pointer", fontSize: "13px",
+                fontFamily: "'DM Sans',sans-serif"
+              }}>{t}</button>
             ))}
           </div>
         </div>
 
-        {/* Slide dots */}
-        <div style={{ position: "absolute", right: "24px", top: "50%", transform: "translateY(-50%)", zIndex: 10, display: "flex", flexDirection: "column", gap: "7px" }}>
-          {DELHI_IMAGES.map((_, i) => (
-            <div key={i} onClick={() => setHeroIdx(i)} style={{ width: i === heroIdx ? 22 : 5, height: 5, borderRadius: 3, background: i === heroIdx ? "#fbbf24" : "rgba(255,255,255,.3)", cursor: "pointer", transition: "all .4s" }} />
-          ))}
-        </div>
+        {/* CENTER CONTENT */}
+        <div style={{
+          position: "relative", zIndex: 10,
+          display: "flex", flexDirection: "column",
+          alignItems: "center", justifyContent: "center",
+          textAlign: "center",
+          minHeight: "calc(100vh - 80px)",
+          padding: "40px 24px"
+        }}>
 
-        {/* Location badge */}
-        <div style={{ position: "absolute", bottom: 170, left: 28, zIndex: 10, background: "rgba(0,0,0,.55)", backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,.12)", borderRadius: "28px", padding: "7px 14px", display: "flex", alignItems: "center", gap: "8px" }}>
-          <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#22c55e", boxShadow: "0 0 7px #22c55e", animation: "blink 1.6s infinite" }} />
-          <span style={{ fontSize: "12px", color: "rgba(255,255,255,.8)", fontWeight: 500 }}>{DELHI_IMAGES[heroIdx].name}</span>
-          <span style={{ fontSize: "11px", color: "rgba(255,255,255,.4)" }}>· {DELHI_IMAGES[heroIdx].area}</span>
-        </div>
-
-        {/* Hero text */}
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, zIndex: 10, padding: "0 28px 44px" }}>
-          <div className="fu1" style={{ display: "inline-block", background: "rgba(251,191,36,.14)", border: "1px solid rgba(251,191,36,.3)", borderRadius: "18px", padding: "4px 14px", fontSize: "10px", color: "#fbbf24", letterSpacing: "2px", marginBottom: "14px", fontWeight: 600 }}>
+          {/* Badge */}
+          <div className="fu1" style={{
+            display: "inline-block",
+            background: "rgba(251,191,36,.15)",
+            border: "1px solid rgba(251,191,36,.4)",
+            borderRadius: "20px", padding: "6px 18px",
+            fontSize: "11px", color: "#fbbf24",
+            letterSpacing: "2px", marginBottom: "20px", fontWeight: 600
+          }}>
             ✦ AI-POWERED DELHI TRIP PLANNER
           </div>
-          <h1 className="fu2" style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(34px,6vw,62px)", fontWeight: 700, lineHeight: 1.1, marginBottom: "14px" }}>
+
+          {/* Heading */}
+          <h1 className="fu2" style={{
+            fontFamily: "'Cormorant Garamond',serif",
+            fontSize: "clamp(42px,7vw,80px)",
+            fontWeight: 700, lineHeight: 1.08,
+            marginBottom: "20px", maxWidth: "800px"
+          }}>
             Discover Delhi<br />
-            <span style={{ background: "linear-gradient(135deg,#fbbf24,#f43f5e)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Like Never Before</span>
+            <span style={{
+              background: "linear-gradient(135deg,#fbbf24,#f43f5e)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent"
+            }}>Like Never Before</span>
           </h1>
-          <p className="fu3" style={{ color: "rgba(255,255,255,.6)", fontSize: "15px", lineHeight: 1.72, marginBottom: "26px", maxWidth: "500px" }}>
-            Tell our AI your budget, interests & travel style — get a personalized day-by-day roadmap through Delhi's iconic landmarks, hidden alleys, and culinary treasures.
+
+          {/* Subtitle */}
+          <p className="fu3" style={{
+            color: "rgba(255,255,255,.65)",
+            fontSize: "17px", lineHeight: 1.75,
+            marginBottom: "40px", maxWidth: "560px"
+          }}>
+            Tell our AI your budget, interests & travel style — get a personalized
+            day-by-day roadmap through Delhi's iconic landmarks, hidden alleys,
+            and culinary treasures.
           </p>
-          <div className="fu4 searchbar" style={{ maxWidth: 640 }}>
-            <span style={{ padding: "0 4px 0 16px", fontSize: "20px" }}>🗺</span>
-            <input className="sinput" placeholder="What kind of Delhi adventure? e.g. 2-day food & heritage tour..."
-              onKeyDown={e => e.key === "Enter" && onStart()} />
-            <button className="pbtn" onClick={onStart}>Plan My Trip →</button>
+
+          {/* Search Bar — CENTERED & BIG */}
+          <div className="fu4" style={{ width: "100%", maxWidth: "680px", marginBottom: "20px" }}>
+            <div className="searchbar" style={{
+              width: "100%",
+              boxShadow: "0 8px 32px rgba(0,0,0,.4)"
+            }}>
+              <span style={{ padding: "0 8px 0 20px", fontSize: "22px" }}>🗺</span>
+              <input
+                className="sinput"
+                style={{ fontSize: "16px", padding: "18px 16px" }}
+                placeholder="What kind of Delhi adventure? e.g. 2-day food & heritage tour..."
+                onKeyDown={e => e.key === "Enter" && onStart()}
+              />
+              <button className="pbtn"
+                onClick={onStart}
+                style={{ padding: "14px 28px", fontSize: "15px", margin: "8px" }}>
+                Plan My Trip →
+              </button>
+            </div>
           </div>
-          <div className="fu4" style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginTop: "12px" }}>
+
+          {/* Quick Tags */}
+          <div className="fu4" style={{
+            display: "flex", gap: "10px",
+            flexWrap: "wrap", justifyContent: "center"
+          }}>
             {["🏛 Heritage Walk", "🍜 Street Food Safari", "🛍 Shopping Spree", "🌿 Garden Tour", "🌙 Night Out"].map(t => (
-              <span key={t} onClick={onStart} style={{ background: "rgba(255,255,255,.07)", border: "1px solid rgba(255,255,255,.1)", borderRadius: "18px", padding: "6px 14px", fontSize: "12px", color: "rgba(255,255,255,.65)", cursor: "pointer" }}>{t}</span>
+              <span key={t} onClick={onStart} style={{
+                background: "rgba(255,255,255,.08)",
+                border: "1px solid rgba(255,255,255,.15)",
+                borderRadius: "20px", padding: "8px 16px",
+                fontSize: "13px", color: "rgba(255,255,255,.75)",
+                cursor: "pointer", transition: "background .2s"
+              }}>{t}</span>
             ))}
           </div>
+
+          {/* Current Location Badge — bottom center */}
+          <div style={{
+            marginTop: "48px",
+            background: "rgba(0,0,0,.5)",
+            backdropFilter: "blur(10px)",
+            border: "1px solid rgba(255,255,255,.12)",
+            borderRadius: "28px", padding: "8px 18px",
+            display: "inline-flex", alignItems: "center", gap: "8px"
+          }}>
+            <div style={{
+              width: 8, height: 8, borderRadius: "50%",
+              background: "#22c55e",
+              boxShadow: "0 0 8px #22c55e",
+              animation: "blink 1.6s infinite"
+            }} />
+            <span style={{ fontSize: "13px", color: "rgba(255,255,255,.85)", fontWeight: 500 }}>
+              {DELHI_IMAGES[heroIdx].name}
+            </span>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,.45)" }}>
+              · {DELHI_IMAGES[heroIdx].area}
+            </span>
+          </div>
+
+          {/* Slide dots */}
+          <div style={{
+            display: "flex", gap: "8px",
+            marginTop: "24px"
+          }}>
+            {DELHI_IMAGES.map((_, i) => (
+              <div key={i} onClick={() => setHeroIdx(i)} style={{
+                width: i === heroIdx ? 24 : 6,
+                height: 6, borderRadius: 3,
+                background: i === heroIdx ? "#fbbf24" : "rgba(255,255,255,.3)",
+                cursor: "pointer", transition: "all .4s"
+              }} />
+            ))}
+          </div>
+
         </div>
       </div>
 
       {/* TICKER */}
-      <div style={{ overflow: "hidden", whiteSpace: "nowrap", padding: "12px 0", background: "rgba(255,255,255,.02)", borderTop: "1px solid rgba(255,255,255,.06)", borderBottom: "1px solid rgba(255,255,255,.06)" }}>
+      <div style={{
+        overflow: "hidden", whiteSpace: "nowrap",
+        padding: "13px 0",
+        background: "rgba(255,255,255,.02)",
+        borderTop: "1px solid rgba(255,255,255,.06)",
+        borderBottom: "1px solid rgba(255,255,255,.06)"
+      }}>
         <div style={{ display: "inline-block", animation: "ticker 28s linear infinite" }}>
           {[...Array(2)].flatMap((_, r) =>
-            ["🏯 RED FORT", "🌸 LOTUS TEMPLE", "🕌 JAMA MASJID", "🛍 CHANDNI CHOWK", "🗼 INDIA GATE", "🎨 NATIONAL MUSEUM", "🌿 LODHI GARDEN", "🍜 PARANTHE WALI GALI", "🛕 AKSHARDHAM", "🎡 WORLDS OF WONDER", "🎭 KINGDOM OF DREAMS"].map((s, i) => (
-              <span key={`${r}-${i}`} style={{ marginRight: "52px", color: "rgba(255,255,255,.3)", fontSize: "12px", fontWeight: 500, letterSpacing: "1px" }}>{s}</span>
+            ["🏯 RED FORT", "🌸 LOTUS TEMPLE", "🕌 JAMA MASJID", "🛍 CHANDNI CHOWK",
+              "🗼 INDIA GATE", "🎨 NATIONAL MUSEUM", "🌿 LODHI GARDEN",
+              "🍜 PARANTHE WALI GALI", "🛕 AKSHARDHAM", "🎡 WORLDS OF WONDER",
+              "🎭 KINGDOM OF DREAMS"].map((s, i) => (
+              <span key={`${r}-${i}`} style={{
+                marginRight: "52px",
+                color: "rgba(255,255,255,.3)",
+                fontSize: "12px", fontWeight: 500, letterSpacing: "1px"
+              }}>{s}</span>
             ))
           )}
         </div>
       </div>
 
       {/* MOSAIC GRID */}
-      <div style={{ padding: "60px 28px", maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "36px", flexWrap: "wrap", gap: "12px" }}>
+      <div style={{ padding: "70px 36px", maxWidth: 1100, margin: "0 auto" }}>
+        <div style={{
+          display: "flex", justifyContent: "space-between",
+          alignItems: "flex-end", marginBottom: "40px",
+          flexWrap: "wrap", gap: "16px"
+        }}>
           <div>
-            <p style={{ color: "#fbbf24", fontSize: "11px", fontWeight: 600, letterSpacing: "2.5px", marginBottom: "8px" }}>ICONIC DESTINATIONS</p>
-            <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(24px,4vw,38px)", fontWeight: 700, lineHeight: 1.15 }}>
+            <p style={{
+              color: "#fbbf24", fontSize: "11px",
+              fontWeight: 600, letterSpacing: "2.5px", marginBottom: "8px"
+            }}>ICONIC DESTINATIONS</p>
+            <h2 style={{
+              fontFamily: "'Cormorant Garamond',serif",
+              fontSize: "clamp(26px,4vw,40px)",
+              fontWeight: 700, lineHeight: 1.15
+            }}>
               Delhi's Most Beloved<br />Landmarks
             </h2>
           </div>
-          <button className="pbtn" onClick={onStart} style={{ padding: "12px 26px" }}>Plan a Visit →</button>
+          <button className="pbtn" onClick={onStart}
+            style={{ padding: "13px 28px" }}>
+            Plan a Visit →
+          </button>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(6,1fr)", gridTemplateRows: "220px 190px", gap: "12px" }}>
+
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(6,1fr)",
+          gridTemplateRows: "240px 200px",
+          gap: "12px"
+        }}>
           {[{ s: 3 }, { s: 2 }, { s: 1 }, { s: 2 }, { s: 2 }, { s: 2 }].map((g, i) => (
-            <div key={i} className="imgcard" onClick={onStart} style={{ gridColumn: `span ${g.s}` }}>
+            <div key={i} className="imgcard"
+              onClick={onStart}
+              style={{ gridColumn: `span ${g.s}` }}>
               <img src={DELHI_IMAGES[i].url} alt={DELHI_IMAGES[i].name} loading="lazy" />
               <div className="imgoverlay">
-                <span style={{ fontSize: "10px", color: "rgba(255,255,255,.55)", fontWeight: 600, letterSpacing: "1.5px", marginBottom: "3px" }}>{DELHI_IMAGES[i].area.toUpperCase()}</span>
-                <span style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "17px", fontWeight: 600 }}>{DELHI_IMAGES[i].name}</span>
+                <span style={{
+                  fontSize: "10px", color: "rgba(255,255,255,.6)",
+                  fontWeight: 600, letterSpacing: "1.5px", marginBottom: "4px"
+                }}>{DELHI_IMAGES[i].area.toUpperCase()}</span>
+                <span style={{
+                  fontFamily: "'Cormorant Garamond',serif",
+                  fontSize: "18px", fontWeight: 600
+                }}>{DELHI_IMAGES[i].name}</span>
               </div>
             </div>
           ))}
@@ -323,21 +534,39 @@ function HomeView({ onStart }) {
       </div>
 
       {/* FEATURES */}
-      <div style={{ background: "rgba(255,255,255,.02)", borderTop: "1px solid rgba(255,255,255,.05)", padding: "60px 28px" }}>
+      <div style={{
+        background: "rgba(255,255,255,.02)",
+        borderTop: "1px solid rgba(255,255,255,.05)",
+        padding: "70px 36px"
+      }}>
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-          <p style={{ color: "#fbbf24", fontSize: "11px", fontWeight: 600, letterSpacing: "2.5px", textAlign: "center", marginBottom: "10px" }}>WHY DELHI TRIP PLANNER</p>
-          <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(22px,4vw,36px)", textAlign: "center", fontWeight: 700, marginBottom: "44px" }}>Smart Travel, Simplified</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: "18px" }}>
+          <p style={{
+            color: "#fbbf24", fontSize: "11px", fontWeight: 600,
+            letterSpacing: "2.5px", textAlign: "center", marginBottom: "10px"
+          }}>WHY DELHI TRIP PLANNER</p>
+          <h2 style={{
+            fontFamily: "'Cormorant Garamond',serif",
+            fontSize: "clamp(24px,4vw,38px)",
+            textAlign: "center", fontWeight: 700, marginBottom: "48px"
+          }}>Smart Travel, Simplified</h2>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))",
+            gap: "20px"
+          }}>
             {[
-              { icon: "🤖", title: "AI-Powered Itineraries", desc: "Personalized day-by-day plans tailored to your budget, interests & style." },
-              { icon: "💰", title: "Budget-Smart Routes", desc: "Every suggestion fits your budget — street food to luxury experiences." },
+              { icon: "🤖", title: "AI-Powered Itineraries", desc: "Personalized day-by-day plans tailored to your budget, interests & travel style." },
+              { icon: "💰", title: "Budget-Smart Routes", desc: "Every suggestion fits your budget — from street food to luxury experiences." },
               { icon: "🗺", title: "Local Expertise", desc: "Insider tips, best visit times, hidden gems & transport advice baked in." },
-              { icon: "⚡", title: "Instant Results", desc: "Your complete trip itinerary generated in seconds, not hours." },
+              { icon: "⚡", title: "Instant Results", desc: "Your complete trip itinerary generated in seconds, not hours of research." },
             ].map(c => (
               <div key={c.title} className="featcard">
-                <div style={{ fontSize: "28px", marginBottom: "14px" }}>{c.icon}</div>
-                <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "18px", fontWeight: 600, marginBottom: "8px" }}>{c.title}</h3>
-                <p style={{ color: "rgba(255,255,255,.5)", fontSize: "13px", lineHeight: 1.72 }}>{c.desc}</p>
+                <div style={{ fontSize: "30px", marginBottom: "14px" }}>{c.icon}</div>
+                <h3 style={{
+                  fontFamily: "'Cormorant Garamond',serif",
+                  fontSize: "19px", fontWeight: 600, marginBottom: "9px"
+                }}>{c.title}</h3>
+                <p style={{ color: "rgba(255,255,255,.5)", fontSize: "14px", lineHeight: 1.72 }}>{c.desc}</p>
               </div>
             ))}
           </div>
@@ -345,25 +574,45 @@ function HomeView({ onStart }) {
       </div>
 
       {/* CTA */}
-      <div style={{ textAlign: "center", padding: "70px 28px" }}>
-        <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(24px,4vw,42px)", fontWeight: 700, marginBottom: "14px" }}>Ready to Explore Delhi?</h2>
-        <p style={{ color: "rgba(255,255,255,.45)", fontSize: "15px", marginBottom: "28px" }}>Your perfect itinerary is just a few clicks away.</p>
-        <button className="pbtn" onClick={onStart} style={{ padding: "16px 48px", fontSize: "16px", borderRadius: "14px" }}>🚀 Start Planning Now</button>
-        <p style={{ color: "rgba(255,255,255,.22)", fontSize: "11px", marginTop: "12px" }}>Free · No sign-up needed · Powered by Gemini AI</p>
+      <div style={{ textAlign: "center", padding: "80px 28px" }}>
+        <h2 style={{
+          fontFamily: "'Cormorant Garamond',serif",
+          fontSize: "clamp(26px,4vw,44px)",
+          fontWeight: 700, marginBottom: "14px"
+        }}>Ready to Explore Delhi?</h2>
+        <p style={{ color: "rgba(255,255,255,.45)", fontSize: "15px", marginBottom: "30px" }}>
+          Your perfect itinerary is just a few clicks away.
+        </p>
+        <button className="pbtn" onClick={onStart}
+          style={{ padding: "17px 52px", fontSize: "17px", borderRadius: "14px" }}>
+          🚀 Start Planning Now
+        </button>
+        <p style={{ color: "rgba(255,255,255,.22)", fontSize: "11px", marginTop: "12px" }}>
+          Free · No sign-up needed · Powered by Groq AI
+        </p>
       </div>
 
       {/* Footer */}
-      <div style={{ borderTop: "1px solid rgba(255,255,255,.06)", padding: "18px 28px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
+      <div style={{
+        borderTop: "1px solid rgba(255,255,255,.06)",
+        padding: "20px 36px",
+        display: "flex", justifyContent: "space-between",
+        alignItems: "center", flexWrap: "wrap", gap: "8px"
+      }}>
         <div style={{ display: "flex", alignItems: "center", gap: "7px" }}>
           <span style={{ fontSize: "16px" }}>🏯</span>
-          <span style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "14px", color: "#fbbf24" }}>Delhi Trip Planner</span>
+          <span style={{
+            fontFamily: "'Cormorant Garamond',serif",
+            fontSize: "14px", color: "#fbbf24"
+          }}>Delhi Trip Planner</span>
         </div>
-        <span style={{ color: "rgba(255,255,255,.22)", fontSize: "11px" }}>Powered by Google Gemini · Free to use</span>
+        <span style={{ color: "rgba(255,255,255,.22)", fontSize: "11px" }}>
+          Powered by Groq AI · Free to use
+        </span>
       </div>
     </div>
   );
 }
-
 /* ══════════════════════════════
    PLANNER FORM
 ══════════════════════════════ */
