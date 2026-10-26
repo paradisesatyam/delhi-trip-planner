@@ -1,36 +1,12 @@
 import { useState, useEffect } from "react";
 
 const DELHI_IMAGES = [
-  {
-    url: "/redfort.jpg",
-    name: "Red Fort",
-    area: "Old Delhi"
-  },
-  {
-    url: "/indiagate.jpg",
-    name: "India Gate",
-    area: "Central Delhi"
-  },
-  {
-    url: "/lotustemple.jpg",
-    name: "Lotus Temple",
-    area: "South Delhi"
-  },
-  {
-    url: "/qutbminar.jpg",
-    name: "Qutb Minar",
-    area: "South Delhi"
-  },
-  {
-    url: "/humayuntomb.jpg",
-    name: "Humayun's Tomb",
-    area: "South Delhi"
-  },
-  {
-    url: "/connaughtplace.jpg",
-    name: "Connaught Place",
-    area: "Central Delhi"
-  },
+  { url: "/redfort.jpg", name: "Red Fort", area: "Old Delhi" },
+  { url: "/indiagate.jpg", name: "India Gate", area: "Central Delhi" },
+  { url: "/lotustemple.jpg", name: "Lotus Temple", area: "South Delhi" },
+  { url: "/qutbminar.jpg", name: "Qutb Minar", area: "South Delhi" },
+  { url: "/humayuntomb.jpg", name: "Humayun's Tomb", area: "South Delhi" },
+  { url: "/connaughtplace.jpg", name: "Connaught Place", area: "Central Delhi" },
 ];
 
 const PLACE_TYPES = [
@@ -180,9 +156,6 @@ const css = `
   }
 `;
 
-/* ══════════════════════════════
-   MAIN APP
-══════════════════════════════ */
 export default function App() {
   const [view, setView] = useState("home");
   const [form, setForm] = useState({
@@ -235,11 +208,9 @@ export default function App() {
   );
 }
 
-/* ══════════════════════════════
-   HOME VIEW
-══════════════════════════════ */
 function HomeView({ onStart }) {
   const [heroIdx, setHeroIdx] = useState(0);
+
   useEffect(() => {
     const t = setInterval(() => setHeroIdx(i => (i + 1) % DELHI_IMAGES.length), 4500);
     return () => clearInterval(t);
@@ -247,11 +218,8 @@ function HomeView({ onStart }) {
 
   return (
     <div style={{ background: "#080810" }}>
-
       {/* HERO */}
       <div style={{ position: "relative", minHeight: "100vh", overflow: "hidden" }}>
-
-        {/* Background Images */}
         {DELHI_IMAGES.map((img, i) => (
           <div key={i} style={{
             position: "absolute", inset: 0,
@@ -260,13 +228,10 @@ function HomeView({ onStart }) {
           }}>
             <img src={img.url} alt={img.name} style={{
               width: "100%", height: "100%",
-              objectFit: "cover",
-              filter: "brightness(.38) saturate(1.2)"
+              objectFit: "cover", filter: "brightness(.38) saturate(1.2)"
             }} />
           </div>
         ))}
-
-        {/* Dark overlays */}
         <div style={{
           position: "absolute", inset: 0,
           background: "linear-gradient(to bottom,rgba(8,8,16,.5) 0%,rgba(8,8,16,.2) 30%,rgba(8,8,16,.6) 70%,#080810 100%)",
@@ -301,7 +266,7 @@ function HomeView({ onStart }) {
           </div>
         </div>
 
-        {/* CENTER CONTENT */}
+        {/* Center Content */}
         <div style={{
           position: "relative", zIndex: 10,
           display: "flex", flexDirection: "column",
@@ -310,12 +275,10 @@ function HomeView({ onStart }) {
           minHeight: "calc(100vh - 80px)",
           padding: "40px 24px"
         }}>
-
-          {/* Badge */}
           <div className="fu1" style={{
             display: "inline-block",
-            background: "rgba(251,191,36,.15)",
-            border: "1px solid rgba(251,191,36,.4)",
+            background: "rgba(251,191,36,.14)",
+            border: "1px solid rgba(251,191,36,.3)",
             borderRadius: "20px", padding: "6px 18px",
             fontSize: "11px", color: "#fbbf24",
             letterSpacing: "2px", marginBottom: "20px", fontWeight: 600
@@ -323,7 +286,6 @@ function HomeView({ onStart }) {
             ✦ AI-POWERED DELHI TRIP PLANNER
           </div>
 
-          {/* Heading */}
           <h1 className="fu2" style={{
             fontFamily: "'Cormorant Garamond',serif",
             fontSize: "clamp(42px,7vw,80px)",
@@ -338,7 +300,6 @@ function HomeView({ onStart }) {
             }}>Like Never Before</span>
           </h1>
 
-          {/* Subtitle */}
           <p className="fu3" style={{
             color: "rgba(255,255,255,.65)",
             fontSize: "17px", lineHeight: 1.75,
@@ -349,12 +310,9 @@ function HomeView({ onStart }) {
             and culinary treasures.
           </p>
 
-          {/* Search Bar — CENTERED & BIG */}
+          {/* Search Bar */}
           <div className="fu4" style={{ width: "100%", maxWidth: "680px", marginBottom: "20px" }}>
-            <div className="searchbar" style={{
-              width: "100%",
-              boxShadow: "0 8px 32px rgba(0,0,0,.4)"
-            }}>
+            <div className="searchbar" style={{ width: "100%", boxShadow: "0 8px 32px rgba(0,0,0,.4)" }}>
               <span style={{ padding: "0 8px 0 20px", fontSize: "22px" }}>🗺</span>
               <input
                 className="sinput"
@@ -362,43 +320,36 @@ function HomeView({ onStart }) {
                 placeholder="What kind of Delhi adventure? e.g. 2-day food & heritage tour..."
                 onKeyDown={e => e.key === "Enter" && onStart()}
               />
-              <button className="pbtn"
-                onClick={onStart}
-                style={{ padding: "14px 28px", fontSize: "15px", margin: "8px" }}>
+              <button className="pbtn" onClick={onStart} style={{ padding: "14px 28px", fontSize: "15px", margin: "8px" }}>
                 Plan My Trip →
               </button>
             </div>
           </div>
 
           {/* Quick Tags */}
-          <div className="fu4" style={{
-            display: "flex", gap: "10px",
-            flexWrap: "wrap", justifyContent: "center"
-          }}>
+          <div className="fu4" style={{ display: "flex", gap: "10px", flexWrap: "wrap", justifyContent: "center" }}>
             {["🏛 Heritage Walk", "🍜 Street Food Safari", "🛍 Shopping Spree", "🌿 Garden Tour", "🌙 Night Out"].map(t => (
               <span key={t} onClick={onStart} style={{
                 background: "rgba(255,255,255,.08)",
                 border: "1px solid rgba(255,255,255,.15)",
                 borderRadius: "20px", padding: "8px 16px",
                 fontSize: "13px", color: "rgba(255,255,255,.75)",
-                cursor: "pointer", transition: "background .2s"
+                cursor: "pointer"
               }}>{t}</span>
             ))}
           </div>
 
-          {/* Current Location Badge — bottom center */}
+          {/* Location Badge */}
           <div style={{
             marginTop: "48px",
-            background: "rgba(0,0,0,.5)",
-            backdropFilter: "blur(10px)",
+            background: "rgba(0,0,0,.5)", backdropFilter: "blur(10px)",
             border: "1px solid rgba(255,255,255,.12)",
             borderRadius: "28px", padding: "8px 18px",
             display: "inline-flex", alignItems: "center", gap: "8px"
           }}>
             <div style={{
               width: 8, height: 8, borderRadius: "50%",
-              background: "#22c55e",
-              boxShadow: "0 0 8px #22c55e",
+              background: "#22c55e", boxShadow: "0 0 8px #22c55e",
               animation: "blink 1.6s infinite"
             }} />
             <span style={{ fontSize: "13px", color: "rgba(255,255,255,.85)", fontWeight: 500 }}>
@@ -409,28 +360,22 @@ function HomeView({ onStart }) {
             </span>
           </div>
 
-          {/* Slide dots */}
-          <div style={{
-            display: "flex", gap: "8px",
-            marginTop: "24px"
-          }}>
+          {/* Slide Dots */}
+          <div style={{ display: "flex", gap: "8px", marginTop: "24px" }}>
             {DELHI_IMAGES.map((_, i) => (
               <div key={i} onClick={() => setHeroIdx(i)} style={{
-                width: i === heroIdx ? 24 : 6,
-                height: 6, borderRadius: 3,
+                width: i === heroIdx ? 24 : 6, height: 6, borderRadius: 3,
                 background: i === heroIdx ? "#fbbf24" : "rgba(255,255,255,.3)",
                 cursor: "pointer", transition: "all .4s"
               }} />
             ))}
           </div>
-
         </div>
       </div>
 
       {/* TICKER */}
       <div style={{
-        overflow: "hidden", whiteSpace: "nowrap",
-        padding: "13px 0",
+        overflow: "hidden", whiteSpace: "nowrap", padding: "13px 0",
         background: "rgba(255,255,255,.02)",
         borderTop: "1px solid rgba(255,255,255,.06)",
         borderBottom: "1px solid rgba(255,255,255,.06)"
@@ -442,8 +387,7 @@ function HomeView({ onStart }) {
               "🍜 PARANTHE WALI GALI", "🛕 AKSHARDHAM", "🎡 WORLDS OF WONDER",
               "🎭 KINGDOM OF DREAMS"].map((s, i) => (
               <span key={`${r}-${i}`} style={{
-                marginRight: "52px",
-                color: "rgba(255,255,255,.3)",
+                marginRight: "52px", color: "rgba(255,255,255,.3)",
                 fontSize: "12px", fontWeight: 500, letterSpacing: "1px"
               }}>{s}</span>
             ))
@@ -459,44 +403,20 @@ function HomeView({ onStart }) {
           flexWrap: "wrap", gap: "16px"
         }}>
           <div>
-            <p style={{
-              color: "#fbbf24", fontSize: "11px",
-              fontWeight: 600, letterSpacing: "2.5px", marginBottom: "8px"
-            }}>ICONIC DESTINATIONS</p>
-            <h2 style={{
-              fontFamily: "'Cormorant Garamond',serif",
-              fontSize: "clamp(26px,4vw,40px)",
-              fontWeight: 700, lineHeight: 1.15
-            }}>
+            <p style={{ color: "#fbbf24", fontSize: "11px", fontWeight: 600, letterSpacing: "2.5px", marginBottom: "8px" }}>ICONIC DESTINATIONS</p>
+            <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(26px,4vw,40px)", fontWeight: 700, lineHeight: 1.15 }}>
               Delhi's Most Beloved<br />Landmarks
             </h2>
           </div>
-          <button className="pbtn" onClick={onStart}
-            style={{ padding: "13px 28px" }}>
-            Plan a Visit →
-          </button>
+          <button className="pbtn" onClick={onStart} style={{ padding: "13px 28px" }}>Plan a Visit →</button>
         </div>
-
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(6,1fr)",
-          gridTemplateRows: "240px 200px",
-          gap: "12px"
-        }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(6,1fr)", gridTemplateRows: "240px 200px", gap: "12px" }}>
           {[{ s: 3 }, { s: 2 }, { s: 1 }, { s: 2 }, { s: 2 }, { s: 2 }].map((g, i) => (
-            <div key={i} className="imgcard"
-              onClick={onStart}
-              style={{ gridColumn: `span ${g.s}` }}>
+            <div key={i} className="imgcard" onClick={onStart} style={{ gridColumn: `span ${g.s}` }}>
               <img src={DELHI_IMAGES[i].url} alt={DELHI_IMAGES[i].name} loading="lazy" />
               <div className="imgoverlay">
-                <span style={{
-                  fontSize: "10px", color: "rgba(255,255,255,.6)",
-                  fontWeight: 600, letterSpacing: "1.5px", marginBottom: "4px"
-                }}>{DELHI_IMAGES[i].area.toUpperCase()}</span>
-                <span style={{
-                  fontFamily: "'Cormorant Garamond',serif",
-                  fontSize: "18px", fontWeight: 600
-                }}>{DELHI_IMAGES[i].name}</span>
+                <span style={{ fontSize: "10px", color: "rgba(255,255,255,.55)", fontWeight: 600, letterSpacing: "1.5px", marginBottom: "3px" }}>{DELHI_IMAGES[i].area.toUpperCase()}</span>
+                <span style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "17px", fontWeight: 600 }}>{DELHI_IMAGES[i].name}</span>
               </div>
             </div>
           ))}
@@ -504,39 +424,21 @@ function HomeView({ onStart }) {
       </div>
 
       {/* FEATURES */}
-      <div style={{
-        background: "rgba(255,255,255,.02)",
-        borderTop: "1px solid rgba(255,255,255,.05)",
-        padding: "70px 36px"
-      }}>
+      <div style={{ background: "rgba(255,255,255,.02)", borderTop: "1px solid rgba(255,255,255,.05)", padding: "70px 36px" }}>
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-          <p style={{
-            color: "#fbbf24", fontSize: "11px", fontWeight: 600,
-            letterSpacing: "2.5px", textAlign: "center", marginBottom: "10px"
-          }}>WHY DELHI TRIP PLANNER</p>
-          <h2 style={{
-            fontFamily: "'Cormorant Garamond',serif",
-            fontSize: "clamp(24px,4vw,38px)",
-            textAlign: "center", fontWeight: 700, marginBottom: "48px"
-          }}>Smart Travel, Simplified</h2>
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))",
-            gap: "20px"
-          }}>
+          <p style={{ color: "#fbbf24", fontSize: "11px", fontWeight: 600, letterSpacing: "2.5px", textAlign: "center", marginBottom: "10px" }}>WHY DELHI TRIP PLANNER</p>
+          <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(22px,4vw,36px)", textAlign: "center", fontWeight: 700, marginBottom: "44px" }}>Smart Travel, Simplified</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: "18px" }}>
             {[
-              { icon: "🤖", title: "AI-Powered Itineraries", desc: "Personalized day-by-day plans tailored to your budget, interests & travel style." },
-              { icon: "💰", title: "Budget-Smart Routes", desc: "Every suggestion fits your budget — from street food to luxury experiences." },
+              { icon: "🤖", title: "AI-Powered Itineraries", desc: "Personalized day-by-day plans tailored to your budget, interests & style." },
+              { icon: "💰", title: "Budget-Smart Routes", desc: "Every suggestion fits your budget — street food to luxury experiences." },
               { icon: "🗺", title: "Local Expertise", desc: "Insider tips, best visit times, hidden gems & transport advice baked in." },
-              { icon: "⚡", title: "Instant Results", desc: "Your complete trip itinerary generated in seconds, not hours of research." },
+              { icon: "⚡", title: "Instant Results", desc: "Your complete trip itinerary generated in seconds, not hours." },
             ].map(c => (
               <div key={c.title} className="featcard">
-                <div style={{ fontSize: "30px", marginBottom: "14px" }}>{c.icon}</div>
-                <h3 style={{
-                  fontFamily: "'Cormorant Garamond',serif",
-                  fontSize: "19px", fontWeight: 600, marginBottom: "9px"
-                }}>{c.title}</h3>
-                <p style={{ color: "rgba(255,255,255,.5)", fontSize: "14px", lineHeight: 1.72 }}>{c.desc}</p>
+                <div style={{ fontSize: "28px", marginBottom: "14px" }}>{c.icon}</div>
+                <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "18px", fontWeight: 600, marginBottom: "8px" }}>{c.title}</h3>
+                <p style={{ color: "rgba(255,255,255,.5)", fontSize: "13px", lineHeight: 1.72 }}>{c.desc}</p>
               </div>
             ))}
           </div>
@@ -544,48 +446,25 @@ function HomeView({ onStart }) {
       </div>
 
       {/* CTA */}
-      <div style={{ textAlign: "center", padding: "80px 28px" }}>
-        <h2 style={{
-          fontFamily: "'Cormorant Garamond',serif",
-          fontSize: "clamp(26px,4vw,44px)",
-          fontWeight: 700, marginBottom: "14px"
-        }}>Ready to Explore Delhi?</h2>
-        <p style={{ color: "rgba(255,255,255,.45)", fontSize: "15px", marginBottom: "30px" }}>
-          Your perfect itinerary is just a few clicks away.
-        </p>
-        <button className="pbtn" onClick={onStart}
-          style={{ padding: "17px 52px", fontSize: "17px", borderRadius: "14px" }}>
-          🚀 Start Planning Now
-        </button>
-        <p style={{ color: "rgba(255,255,255,.22)", fontSize: "11px", marginTop: "12px" }}>
-          Free · No sign-up needed · Powered by Groq AI
-        </p>
+      <div style={{ textAlign: "center", padding: "70px 28px" }}>
+        <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(24px,4vw,42px)", fontWeight: 700, marginBottom: "14px" }}>Ready to Explore Delhi?</h2>
+        <p style={{ color: "rgba(255,255,255,.45)", fontSize: "15px", marginBottom: "28px" }}>Your perfect itinerary is just a few clicks away.</p>
+        <button className="pbtn" onClick={onStart} style={{ padding: "16px 48px", fontSize: "16px", borderRadius: "14px" }}>🚀 Start Planning Now</button>
+        <p style={{ color: "rgba(255,255,255,.22)", fontSize: "11px", marginTop: "12px" }}>Free · No sign-up needed · Powered by Groq AI</p>
       </div>
 
       {/* Footer */}
-      <div style={{
-        borderTop: "1px solid rgba(255,255,255,.06)",
-        padding: "20px 36px",
-        display: "flex", justifyContent: "space-between",
-        alignItems: "center", flexWrap: "wrap", gap: "8px"
-      }}>
+      <div style={{ borderTop: "1px solid rgba(255,255,255,.06)", padding: "18px 28px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "7px" }}>
           <span style={{ fontSize: "16px" }}>🏯</span>
-          <span style={{
-            fontFamily: "'Cormorant Garamond',serif",
-            fontSize: "14px", color: "#fbbf24"
-          }}>Delhi Trip Planner</span>
+          <span style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "14px", color: "#fbbf24" }}>Delhi Trip Planner</span>
         </div>
-        <span style={{ color: "rgba(255,255,255,.22)", fontSize: "11px" }}>
-          Powered by Groq AI · Free to use
-        </span>
+        <span style={{ color: "rgba(255,255,255,.22)", fontSize: "11px" }}>Powered by Groq AI · Free to use</span>
       </div>
     </div>
   );
 }
-/* ══════════════════════════════
-   PLANNER FORM
-══════════════════════════════ */
+
 function PlannerView({ form, upd, toggleType, step, setStep, canNext, onBack, onSubmit }) {
   const STEPS = ["Budget", "Duration & Group", "Route", "Interests", "Extra Details"];
   const next = () => step < STEPS.length - 1 ? setStep(s => s + 1) : onSubmit();
@@ -605,7 +484,6 @@ function PlannerView({ form, upd, toggleType, step, setStep, canNext, onBack, on
       </div>
 
       <div key={step} className="panel" style={{ width: "100%", maxWidth: 580, flex: 1 }}>
-
         {step === 0 && <>
           <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "30px", fontWeight: 700, marginBottom: "7px" }}>What's your travel budget?</h2>
           <p style={{ color: "rgba(255,255,255,.42)", marginBottom: "24px", fontSize: "14px" }}>Per person, per day in Delhi</p>
@@ -707,9 +585,6 @@ function PlannerView({ form, upd, toggleType, step, setStep, canNext, onBack, on
   );
 }
 
-/* ══════════════════════════════
-   RESULT VIEW
-══════════════════════════════ */
 function ResultView({ result, loading, onReset }) {
   const [activeDay, setActiveDay] = useState(0);
 
@@ -744,7 +619,7 @@ function ResultView({ result, loading, onReset }) {
           </div>
           <div style={{ textAlign: "center" }}>
             <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "22px", marginBottom: "8px" }}>Crafting your perfect Delhi itinerary...</p>
-            <p style={{ color: "rgba(255,255,255,.38)", fontSize: "13px", animation: "blink 2s infinite" }}>Powered by Google Gemini AI</p>
+            <p style={{ color: "rgba(255,255,255,.38)", fontSize: "13px", animation: "blink 2s infinite" }}>Powered by Groq AI</p>
           </div>
         </div>
       ) : result?.error ? (
@@ -755,7 +630,7 @@ function ResultView({ result, loading, onReset }) {
           <button className="pbtn" onClick={onReset} style={{ padding: "13px 32px" }}>Try Again</button>
         </div>
       ) : result ? (
-        <div style={{ maxWidth: 820, margin: "0 auto", padding: "40px 20px", animation: "fadeup .6s ease" }}>
+        <div style={{ maxWidth: 820, margin: "0 auto", padding: "40px 20px" }}>
           <div style={{ marginBottom: "36px" }}>
             <h1 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(24px,5vw,44px)", fontWeight: 700, lineHeight: 1.12, marginBottom: "12px" }}>{result.title}</h1>
             <p style={{ color: "rgba(255,255,255,.58)", fontSize: "15px", lineHeight: 1.75, marginBottom: "22px", maxWidth: 640 }}>{result.summary}</p>
@@ -843,12 +718,8 @@ function ResultView({ result, loading, onReset }) {
     </div>
   );
 }
-
-/* ══════════════════════════════
-   GEMINI AI GENERATOR (FREE)
-══════════════════════════════ */
 async function generatePlan(form, setResult) {
-  const API_KEY = import.meta.env.VITE_GROQ_API_KEY;
+  const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
   const budgetMap = {
     budget: "Budget (₹500–1,500/day)",
     moderate: "Moderate (₹1,500–4,000/day)",
@@ -864,35 +735,25 @@ Trip details:
 - Interests: ${form.placeTypes.join(", ") || "general sightseeing"}
 - Notes: ${form.description || "none"}
 
-IMPORTANT: Respond ONLY with a raw JSON object. No markdown, no backticks, no code blocks, no explanation, no extra text before or after. Just the JSON.
-
-Use this exact structure:
+Respond ONLY with valid JSON. No markdown, no backticks, no extra text. Use this exact structure:
 {"title":"creative trip title","summary":"2-3 sentence overview","totalBudgetEstimate":"e.g. ₹3,000–4,500 per person total","tips":["tip1","tip2","tip3"],"days":[{"day":1,"theme":"Day theme","transport":"Recommended transport","dayBudget":"₹X–Y per person","stops":[{"time":"9:00 AM","name":"Place name","type":"Monument","description":"1-2 sentence description","duration":"1.5 hours","cost":"₹X per person or Free","tip":"one insider tip"}]}]}`;
 
   try {
-    const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${API_KEY}`
-      },
-      body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
-        messages: [
-          {
-            role: "system",
-            content: "You are a Delhi travel expert. You must respond with valid raw JSON only. No markdown formatting, no code blocks, no backticks, no explanations. Just pure JSON."
-          },
-          {
-            role: "user",
-            content: prompt
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${API_KEY}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: {
+            temperature: 0.7,
+            maxOutputTokens: 4000,
+            responseMimeType: "application/json"
           }
-        ],
-        temperature: 0.7,
-        max_tokens: 4000,
-        response_format: { type: "json_object" }
-      })
-    });
+        })
+      }
+    );
 
     const data = await res.json();
 
@@ -900,26 +761,18 @@ Use this exact structure:
       setResult({
         error: true,
         message: "API Error",
-        detail: data?.error?.message || "Check your Groq API key"
+        detail: data?.error?.message || "Check your Gemini API key in .env file"
       });
       return;
     }
 
-    const text = data.choices?.[0]?.message?.content || "";
-
-    // Clean any possible markdown wrapping
-    const clean = text
-      .replace(/```json/gi, "")
-      .replace(/```/g, "")
-      .trim();
-
-    // Extract JSON if there's extra text around it
+    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
+    const clean = text.replace(/```json|```/g, "").trim();
     const jsonMatch = clean.match(/\{[\s\S]*\}/);
     if (!jsonMatch) {
       setResult({ error: true, message: "Could not parse response. Please try again." });
       return;
     }
-
     const parsed = JSON.parse(jsonMatch[0]);
     setResult(parsed);
 
